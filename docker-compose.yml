@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ./backend
+    container_name: crm-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - crm-db:/app/data
+      - crm-chroma:/app/chroma_db
+    environment:
+      - DATABASE_URL=sqlite:///./data/crm_intelligence.db
+      - CHROMA_PERSIST_DIR=./chroma_db
+      - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
+      - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY}
+      - LANGCHAIN_TRACING_V2=true
+      - LANGCHAIN_PROJECT=crm-intelligence
+      - HF_LLM_MODEL=mistralai/Mistral-7B-Instruct-v0.3
+      - EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build: ./frontend
+    container_name: crm-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  crm-db:
+  crm-chroma:

@@ -1,0 +1,162 @@
+.analytics-page {
+  padding: 28px 32px 48px;
+  max-width: 1400px;
+  animation: fadeInUp 0.28s ease;
+}
+
+.analytics-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 12px;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.analytics-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+.analytics-header h1 { margin-bottom: 4px; }
+.days-select { width: auto; min-width: 140px; }
+
+/* ── KPI grid ────────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-1);
+  border-radius: 12px;
+  padding: 16px 14px;
+  text-align: center;
+  transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+  position: relative;
+}
+.stat-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}
+.stat-lbl { font-size: 0.66rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.stat-val { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+.stat-sub { font-size: 0.65rem; color: var(--text-3); margin-top: 5px; }
+.stat-trend {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.stat-trend.up  svg { color: var(--green); }
+.stat-trend.down svg { color: var(--red); }
+
+/* ── Chart blocks ────────────────────────────────────── */
+.chart-block {
+  margin-bottom: 18px;
+}
+.chart-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.empty-chart {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-3);
+  font-size: 0.82rem;
+  border: 1px dashed var(--border-2);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+/* Chart tooltip */
+.chart-tooltip {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-width: 120px;
+}
+.tooltip-label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text-1);
+  margin-bottom: 4px;
+}
+
+/* ── 2-column row ────────────────────────────────────── */
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+/* ── Pie legend ──────────────────────────────────────── */
+.legend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  margin-top: 12px;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.legend-cat { font-size: 0.73rem; color: var(--text-2); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.legend-pct { font-size: 0.72rem; color: var(--text-3); font-weight: 600; }
+
+/* ── Reputation ──────────────────────────────────────── */
+.reputation-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.rep-item {
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--border-1);
+}
+.rep-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.rep-domain { font-size: 0.8rem; font-weight: 600; color: var(--text-1); }
+.rep-trend-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 100px;
+}
+.rep-trend-badge.improving { background: rgba(16,185,129,0.14); color: #34d399; }
+.rep-trend-badge.declining { background: rgba(239,68,68,0.14);  color: #f87171; }
+.rep-trend-badge.stable    { background: rgba(245,158,11,0.14); color: #fbbf24; }
+.rep-stars { font-size: 0.9rem; color: #fbbf24; display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.rep-score-val { font-weight: 700; color: var(--text-1); font-size: 0.82rem; }
+.rep-count { font-size: 0.7rem; color: var(--text-3); }
+.rep-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+.rep-highlight { font-size: 0.73rem; color: var(--text-2); font-style: italic; line-height: 1.5; }
+
+/* ── Rates row ───────────────────────────────────────── */
+.rates-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.rate-card { padding: 20px; }
+.rate-label { font-size: 0.72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.rate-val { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+.rate-bar-wrap { height: 6px; background: var(--bg-elevated); border-radius: 3px; overflow: hidden; }
+.rate-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+
+/* Reuse page-title from InboxPage */
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.page-title svg { color: var(--accent-light); }

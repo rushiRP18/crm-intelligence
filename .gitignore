@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Environment
+.env
+*.env.local
+*.env.production
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# ChromaDB / Vector store
+chroma_db/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.lock
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+
+# Test
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Docker
+*.env.docker
