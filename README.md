@@ -27,6 +27,28 @@ The **CRM Intelligence Platform** is an enterprise-grade AI triage engine built 
 
 ---
 
+## 🛠️ Technical Stack & Justifications
+
+The CRM Intelligence Platform is built on a decoupled architecture designed for local execution, low latency, and clear separation of concerns:
+
+### ⚙️ Backend & Database
+* **FastAPI**: Provides a high-performance web framework. Its native `BackgroundTasks` queue runs heavy LangGraph AI processes asynchronously, letting the API respond to ingestion requests in under 100ms.
+* **SQLAlchemy & SQLite**: SQLite serves as a lightweight, zero-setup relational database. SQLAlchemy ORM manages transactional sessions and models (emails, threads, contacts, drafts) with clean, parameter-protected query execution.
+* **Pydantic**: Enforces strict runtime data validation and schema serialization at all API boundaries.
+
+### 🧠 AI & Agent Orchestration
+* **LangGraph**: Enables stateful, multi-actor workflows. It models the agent as a cyclic graph, letting us execute complex conditional routing logic (e.g. bypassing auto-replies for legal/security threats and routing compliance issues to a DPO).
+* **ChromaDB**: An embedded vector store that runs entirely in-process. It stores and queries document metadata and vectors with local persistence and zero setup.
+* **Model Choices**:
+  * **mistralai/Mistral-7B-Instruct-v0.3**: Hand-picked for robust instruction-following and reliable JSON extraction.
+  * **sentence-transformers/all-MiniLM-L6-v2**: A lightweight (~90MB) local model that generates 384-dimensional embeddings on the CPU in milliseconds, avoiding external API latency and costs.
+
+### 🎨 Frontend UI
+* **React & Vite**: React provides a modular component-driven architecture for rendering real-time dashboard data. Vite acts as the build system, providing instant hot-reloading.
+* **Recharts & Lucide React**: Recharts powers our clean SVG line charts and category volume graphs, and Lucide React supplies modern dashboard iconography.
+
+---
+
 ## 🏗️ System Architecture
 
 ```text
