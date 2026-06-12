@@ -38,6 +38,7 @@ The CRM Intelligence Platform is built on a decoupled architecture designed for 
 
 ### 🧠 AI & Agent Orchestration
 * **LangGraph**: Enables stateful, multi-actor workflows. It models the agent as a cyclic graph, letting us execute complex conditional routing logic (e.g. bypassing auto-replies for legal/security threats and routing compliance issues to a DPO).
+* **LangSmith**: Used for LLM observability and evaluation. It captures full run execution traces, latency metrics, input/output prompt payloads, and tool execution logs for all node runs in our agent pipeline. This provides transparent debugging, prompt tracing, and performance evaluation, which is vital for production agent systems.
 * **ChromaDB**: An embedded vector store that runs entirely in-process. It stores and queries document metadata and vectors with local persistence and zero setup.
 * **Model Choices**:
   * **mistralai/Mistral-7B-Instruct-v0.3**: Hand-picked for robust instruction-following and reliable JSON extraction.
